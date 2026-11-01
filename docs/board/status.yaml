@@ -1,0 +1,171 @@
+product: whispora
+updated: 2026-11-01
+current_phase: 0
+phases:
+  - id: 0
+    name: Foundations
+    status: not_started
+  - id: 1
+    name: Meetings
+    status: not_started
+  - id: 2
+    name: Dictation
+    status: not_started
+  - id: 3
+    name: Agents
+    status: not_started
+  - id: 4
+    name: Own models
+    status: not_started
+  - id: 5
+    name: Languages
+    status: not_started
+  - id: 6
+    name: Ship and extend
+    status: not_started
+modules:
+  contracts:
+    phase: 0
+    layer: foundation
+    status: not_started
+    owner: null
+  config:
+    phase: 0
+    layer: foundation
+    status: not_started
+    owner: null
+  store:
+    phase: 0
+    layer: foundation
+    status: not_started
+    owner: null
+  trace:
+    phase: 0
+    layer: foundation
+    status: not_started
+    owner: null
+  audio:
+    phase: 1
+    layer: capture
+    status: not_started
+    owner: null
+  platform_macos:
+    phase: 1
+    layer: capture
+    status: not_started
+    owner: null
+  calendar:
+    phase: 1
+    layer: capture
+    status: not_started
+    owner: null
+  engine_supervisor:
+    phase: 0
+    layer: engines
+    status: not_started
+    owner: null
+  speech_engine_mac:
+    phase: 0
+    layer: engines
+    status: not_started
+    owner: null
+  llm_engine_local:
+    phase: 1
+    layer: engines
+    status: not_started
+    owner: null
+  providers:
+    phase: 1
+    layer: engines
+    status: not_started
+    owner: null
+  models:
+    phase: 0
+    layer: engines
+    status: not_started
+    owner: null
+  transcription:
+    phase: 0
+    layer: pipelines
+    status: not_started
+    owner: null
+  speakers:
+    phase: 1
+    layer: pipelines
+    status: not_started
+    owner: null
+  text:
+    phase: 1
+    layer: pipelines
+    status: not_started
+    owner: null
+  meetings:
+    phase: 1
+    layer: features
+    status: not_started
+    owner: null
+  file_transcription:
+    phase: 0
+    layer: features
+    status: not_started
+    owner: null
+  dictation:
+    phase: 2
+    layer: features
+    status: not_started
+    owner: null
+  insertion:
+    phase: 2
+    layer: features
+    status: not_started
+    owner: null
+  ffi:
+    phase: 0
+    layer: surfaces
+    status: not_started
+    owner: null
+  app:
+    phase: 0
+    layer: surfaces
+    status: not_started
+    owner: null
+  local_api:
+    phase: 3
+    layer: surfaces
+    status: not_started
+    owner: null
+  cli:
+    phase: 0
+    layer: surfaces
+    status: not_started
+    owner: null
+  mcp:
+    phase: 3
+    layer: surfaces
+    status: not_started
+    owner: null
+  agent_plugins:
+    phase: 3
+    layer: surfaces
+    status: not_started
+    owner: null
+  eval:
+    phase: 0
+    layer: tooling
+    status: not_started
+    owner: null
+  model_lab:
+    phase: 4
+    layer: tooling
+    status: not_started
+    owner: null
+  model_hosting:
+    phase: 4
+    layer: tooling
+    status: not_started
+    owner: null
+  distribution:
+    phase: 0
+    layer: tooling
+    status: not_started
+    owner: null

@@ -1,0 +1,116 @@
+flowchart TB
+  subgraph surfaces["Surfaces"]
+    ffi["FFI bridge<br/><small>phase 0 · Rust</small>"]
+    app["Mac app<br/><small>phase 0 · Swift</small>"]
+    local_api["local API<br/><small>phase 3 · Rust</small>"]
+    cli["CLI<br/><small>phase 0 · Rust</small>"]
+    mcp["MCP server<br/><small>phase 3 · Rust</small>"]
+    agent_plugins["agent plugins<br/><small>phase 3 · Markdown/Shell</small>"]
+  end
+  subgraph features["Features"]
+    meetings["meetings<br/><small>phase 1 · Rust</small>"]
+    file_transcription["file transcription<br/><small>phase 0 · Rust</small>"]
+    dictation["dictation<br/><small>phase 2 · Rust</small>"]
+    insertion["insertion<br/><small>phase 2 · Rust</small>"]
+  end
+  subgraph pipelines["Pipelines"]
+    transcription["transcription<br/><small>phase 0 · Rust</small>"]
+    speakers["speakers<br/><small>phase 1 · Rust</small>"]
+    text["text<br/><small>phase 1 · Rust</small>"]
+  end
+  subgraph engines["Engines and models"]
+    engine_supervisor["engine supervisor<br/><small>phase 0 · Rust</small>"]
+    speech_engine_mac["speech engine (Mac)<br/><small>phase 0 · Swift</small>"]
+    llm_engine_local["local LLM engine<br/><small>phase 1 · Rust</small>"]
+    providers["providers<br/><small>phase 1 · Rust</small>"]
+    models["models<br/><small>phase 0 · Rust</small>"]
+  end
+  subgraph capture["Capture and platform"]
+    audio["audio<br/><small>phase 1 · Rust</small>"]
+    platform_macos["platform macOS<br/><small>phase 1 · Rust</small>"]
+    calendar["calendar<br/><small>phase 1 · Rust</small>"]
+  end
+  subgraph foundation["Foundation"]
+    contracts["contracts<br/><small>phase 0 · Rust</small>"]
+    config["config<br/><small>phase 0 · Rust</small>"]
+    store["store<br/><small>phase 0 · Rust</small>"]
+    trace["trace<br/><small>phase 0 · Rust</small>"]
+  end
+  subgraph tooling["Tooling and operations"]
+    eval["eval<br/><small>phase 0 · Rust/Python</small>"]
+    model_lab["model lab<br/><small>phase 4 · Python</small>"]
+    model_hosting["model hosting<br/><small>phase 4 · Infra</small>"]
+    distribution["distribution<br/><small>phase 0 · Shell/Swift</small>"]
+  end
+  config --> contracts
+  store --> contracts
+  store --> config
+  trace --> contracts
+  audio --> contracts
+  audio --> platform_macos
+  platform_macos --> contracts
+  calendar --> contracts
+  calendar --> platform_macos
+  engine_supervisor --> contracts
+  engine_supervisor --> models
+  engine_supervisor --> trace
+  speech_engine_mac --> models
+  llm_engine_local --> models
+  providers --> contracts
+  providers --> config
+  providers --> trace
+  models --> contracts
+  models --> config
+  models --> store
+  transcription --> engine_supervisor
+  transcription --> providers
+  transcription --> contracts
+  transcription --> trace
+  speakers --> engine_supervisor
+  speakers --> calendar
+  speakers --> store
+  speakers --> contracts
+  text --> providers
+  text --> config
+  text --> contracts
+  meetings --> audio
+  meetings --> platform_macos
+  meetings --> calendar
+  meetings --> transcription
+  meetings --> speakers
+  meetings --> text
+  meetings --> store
+  meetings --> trace
+  file_transcription --> audio
+  file_transcription --> transcription
+  file_transcription --> speakers
+  file_transcription --> text
+  file_transcription --> store
+  dictation --> audio
+  dictation --> platform_macos
+  dictation --> transcription
+  dictation --> text
+  dictation --> insertion
+  dictation --> store
+  insertion --> platform_macos
+  ffi --> meetings
+  ffi --> file_transcription
+  ffi --> dictation
+  ffi --> store
+  ffi --> config
+  ffi --> models
+  app --> ffi
+  local_api --> meetings
+  local_api --> file_transcription
+  local_api --> store
+  cli --> local_api
+  mcp --> local_api
+  agent_plugins --> mcp
+  agent_plugins --> cli
+  eval --> transcription
+  eval --> speakers
+  eval --> trace
+  model_lab --> eval
+  model_hosting --> model_lab
+  distribution --> models
+  distribution --> app
